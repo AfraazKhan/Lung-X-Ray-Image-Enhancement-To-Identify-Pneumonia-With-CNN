@@ -1,0 +1,42 @@
+{% extends "basic.html" %}
+{% block body %}
+<style>
+        body {
+                background: url(' {{url_for('static',filename='img/closeup-african-american-pediatrician-doctor-holding-lungs-radiography-explaining-xray-expertise-patient-mother-discussing-medical-treatment-hospital-office-health-care-service.jpg')}} ') no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+        }
+</style>
+
+<div class="container h-100">
+        <div class=" d-flex h-100 justify-content-center align-items-center my-5"
+                style="border: 4px;position: relative;top: 100px;">
+                <span class="border border-info">
+                        <h1 style="color: rgb(30, 27, 13); ">Upload a file</h1> <span>
+                                <i class="bi bi-upload" style="position: static;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                                                <path
+                                                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                                                <path
+                                                        d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z" />
+                                        </svg> </i></span>
+                        <form action="/uploader" method="post" enctype="multipart/form-data"
+                                style="background-color: #f1e8e9;">
+                                <input type="file" name="file1">
+                                <button type="submit" id="msg" class="btn btn-primary">predict</button>
+                        </form>
+                </span>
+        </div>
+</div>
+<script>
+        let msg = document.getElementById('msg')
+        msg.addEventListener('click', function () {
+        //        alert('Your Image file successfully submited. Wait for the prediction');
+                document.location = '/prediction'
+        });
+</script>
+{% endblock %}

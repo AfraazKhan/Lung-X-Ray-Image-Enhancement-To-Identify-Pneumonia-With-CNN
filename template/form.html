@@ -1,0 +1,118 @@
+{% extends "basic.html" %} {% block body %}
+<style>
+    body {
+        background: url(' {{url_for('static',filename='img/closeup-african-american-pediatrician-doctor-holding-lungs-radiography-explaining-xray-expertise-patient-mother-discussing-medical-treatment-hospital-office-health-care-service.jpg')}} ') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    label {
+        font-size: 15px;
+        width: 100px;
+        margin: 5px;
+        padding: 5px;
+    }
+    
+    input {
+        font-size: 15px;
+        width: 200px;
+        margin: 5px;
+        padding: 5px;
+    }
+</style>
+
+<div class="container h-100">
+    <div class=" d-flex h-100 justify-content-center align-items-center my-5" style="border: 4px;position: relative;top: 100px;">
+        <span class="border border-info">
+                        <h1 style="color: rgb(30, 27, 13); background: #dbd0bd;padding-top: 18px;text-align: center;padding-bottom: 18px;margin: 0px;">Fill Details</h1> <span>
+                              </span>
+        <form action="/uploader" id="details" method="post" enctype="multipart/form-data" style="background-color: #f1e8e9;width:1000px;margin-bottom:100px">
+            <label for="fname">Patient name:</label>
+            <input type="text" name="pname"><br>
+            <label for="lname"> Patient age:</label>
+            <input type="text" name="age"><br><br>
+            <label for="Confusion">Confusion:</label>
+            <select id="Confusion" name="confusion">
+                            <option value="yes">Yes</option>
+                             <option value="no">No</option>
+
+  </select><br><br>
+            <label for="Respiratory Rate">Respiratory Rate:</label>
+            <input type="number" id="quantity" name="rr" min="1" max="500"><br>
+            <label for="Blood Pressure">Blood Pressure:</label>
+            <input type="number" id="quantity1" name="bp" min="1" max="500">(Systolic mm Hg)<br>
+            <label for="Uremia">Uremia:</label>
+            <input type="number" id="quantity2" name="uremia" min="1" max="500">(mmol/L)<br>
+            <input type="file" name="file1">
+            <button type="submit" id="msg" class="btn btn-primary">predict</button>
+        </form>
+        </span>
+    </div>
+</div>
+<script href="{{ url_for('static', filename='script.js')}}"></script>
+<!-- ========= JS Files =========  -->
+<!-- Bootstrap -->
+<!-- <script src="assets/js/lib/jquery-3.4.1.min.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/lib/jquery-3.4.1.min.js')}}"></script>
+<!-- Bootstrap-->
+<!-- <script src="assets/js/lib/popper.min.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/lib/popper.min.js')}}"></script>
+<!-- <script src="assets/js/lib/bootstrap.bundle.min.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/lib/bootstrap.bundle.min.js')}}"></script>
+
+<!-- Ionicons -->
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<!-- Splide -->
+<!-- <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+<!-- Base Js File -->
+<!-- <script src="assets/js/base.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/base.js')}}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    check()
+
+    function check() {
+        if (localStorage.getItem('user_name') == null) {
+            window.open('http://127.0.0.1:5000/', "_self")
+        } else {
+            $('#username').html(localStorage.getItem('user_name'))
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('user_name');
+        window.open('http://127.0.0.1:5000/', "_self")
+    }
+
+
+    let msg = document.getElementById('msg')
+    msg.addEventListener('click', function() {
+        alert('Your Image file successfully submited. Wait for the prediction');
+        document.location = '/prediction'
+    });
+
+    // function get_details() {
+    //     console.log(decodeURIComponent($("#details").find('select, textarea, input').serialize()) + '&req=4')
+    //     dr_id = localStorage.getItem('dr_id');
+    //     $.ajax({
+    //         type: "POST",
+    //         url: 'http://localhost/simple-login-page-in-html/simple-login-page-in-html/login.php',
+    //         data: decodeURIComponent($("#details").find('select, textarea, input').serialize()) + '&dr_id=' + dr_id + '&req=4',
+    //         success: function(html) {
+    //             if (html == 'ok') {
+    //                 // localStorage.setItem('pid', html[0]);
+    //                 alert('Your Image file successfully submited. Wait for the prediction');
+    //                 document.location = '/prediction'
+    //             } else {
+    //                 alert(html)
+    //             }
+    //         }
+    //     });
+    // }
+</script>
+
+{% endblock %}

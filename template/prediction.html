@@ -1,0 +1,76 @@
+{% extends "basic.html" %} {% block body %}
+<style>
+    body {
+        background-color: lightblue;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+<div class="container">
+
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+            <path fill-rule="evenodd"
+                d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+        </svg>
+        <h1>Here is the prediction text</h1>
+        <i class="bi bi-chevron-double-right"></i>
+    </span>
+    <hr>
+    <div class="justify-content-center align-items-center my-5 ">
+        <br>
+        <pre> <h4><p name="uploader" id="uploader">{{ prediction_text }} </p></h4></pre>
+    </div>
+    <hr>
+    <br>
+    <div class="container">
+        <div class=" justify-content-center align-items-center mx-5 " style="position: absolute;">
+            <ul class="list-relative text-center">
+                <a href="https://www.ima-india.org/ima/">
+                    <li style="color: black;">Indian Medical Assosciation</li>
+                </a>
+                <a href="https://www.mayoclinic.org/diseases-conditions/pneumonia/symptoms-causes/syc-20354204">
+                    <li style="color: black;">Symptoms</li>
+                </a>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+<script href="{{ url_for('static', filename='script.js')}}"></script>
+<!-- ========= JS Files =========  -->
+<!-- Bootstrap -->
+<!-- <script src="assets/js/lib/jquery-3.4.1.min.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/lib/jquery-3.4.1.min.js')}}"></script>
+<!-- Bootstrap-->
+<!-- <script src="assets/js/lib/popper.min.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/lib/popper.min.js')}}"></script>
+<!-- <script src="assets/js/lib/bootstrap.bundle.min.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/lib/bootstrap.bundle.min.js')}}"></script>
+
+<!-- Ionicons -->
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<!-- Splide -->
+<!-- <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+<!-- Base Js File -->
+<!-- <script src="assets/js/base.js"></script> -->
+<script href="{{ url_for('static', filename='assets/js/base.js')}}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $('#username').html(localStorage.getItem('user_name'))
+
+    function logout() {
+        localStorage.removeItem('user_name');
+        window.open('http://127.0.0.1:5000/', "_self")
+    }
+</script>
+
+
+{% endblock %}
